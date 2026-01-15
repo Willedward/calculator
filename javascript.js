@@ -34,7 +34,7 @@ function operate(operator, num1, num2)
     }
 }
 
-
+//reseting
 function reset()
 {
     answer = 0;
@@ -67,6 +67,15 @@ function deleting()
     }
 }
 
+function display(ans)
+{
+    const curr_display = document.querySelector('#ans_display');
+    screen.removeChild(curr_display);
+    const ans_display = document.createElement('p');
+    ans_display.id = 'ans_display';
+    ans_display.textContent = ans;
+    screen.appendChild(ans_display);
+}
 
 let num1 = "";
 let num2 = "";
@@ -75,8 +84,19 @@ let operator_clicked = false;
 let answer = 0;
 num_buttons = document.querySelectorAll('.numbutton');
 let reseted = false;
-
 let double_operator = false;
+
+const screen = document.querySelector('#screen');
+const ans_display = document.createElement('p');
+ans_display.id = 'ans_display';
+ans_display.textContent = answer;
+console.log(ans_display.textContent);
+screen.appendChild(ans_display);
+let curr_standing = ""
+
+let first_operator=true;
+let prev_operator = "";
+let equal_sign = false;
 
 num_buttons.forEach((num_button) =>{
     num_button.addEventListener('click', ()=>{
@@ -107,25 +127,7 @@ num_buttons.forEach((num_button) =>{
     });
 });
 
-const screen = document.querySelector('#screen');
-const ans_display = document.createElement('p');
-ans_display.id = 'ans_display';
-ans_display.textContent = answer;
-console.log(ans_display.textContent);
-screen.appendChild(ans_display);
-let curr_standing = ""
-function display(ans)
-{
-    const curr_display = document.querySelector('#ans_display');
-    screen.removeChild(curr_display);
-    const ans_display = document.createElement('p');
-    ans_display.id = 'ans_display';
-    ans_display.textContent = ans;
-    screen.appendChild(ans_display);
-}
-let first_operator=true;
-let prev_operator = "";
-let equal_sign = false;
+
 operator_buttons = document.querySelectorAll('.operatorbuttons');
 operator_buttons.forEach((operator_button) => {
     operator_button.addEventListener('click', () =>
@@ -171,8 +173,6 @@ operator_buttons.forEach((operator_button) => {
         double_operator = true;
     });
 });
-
-//reseting
 
 
 
