@@ -50,16 +50,19 @@ num_buttons.forEach((num_button) =>{
                 reset();
                 reseted = true;
         }
-        if(operator_clicked==false){
+        
 
+        if(operator_clicked==false){
+            curr_standing = "num1"
             num1 += num_button.textContent;
             console.log('num1');
             console.log(num1);
             display(num1);
+            
         }
         else if(operator_clicked)
         {
-            
+            curr_standing = "num2"
             num2 += num_button.textContent;
             console.log('num2')
             console.log(num2);
@@ -74,7 +77,7 @@ ans_display.id = 'ans_display';
 ans_display.textContent = answer;
 console.log(ans_display.textContent);
 screen.appendChild(ans_display);
-
+let curr_standing = ""
 function display(ans)
 {
     const curr_display = document.querySelector('#ans_display');
@@ -94,6 +97,8 @@ operator_buttons.forEach((operator_button) => {
         operator = operator_button.textContent;
         console.log('operator clicked');
         console.log(operator);
+        console.log(`num1 ${num1}`);
+        console.log(`num2 ${num2}`);
         if(first_operator == false)
         {
             if(equal_sign) //equal_sign signifies state of still just =
@@ -105,11 +110,14 @@ operator_buttons.forEach((operator_button) => {
                 answer = operate(prev_operator, num1, num2);
                 reseted = false;
                 display(answer);
+                num1 = answer;
+                num2 = "";
             }
-            if(operator === '=') {equal_sign = true; prev_operator = "";}
+            if(operator === '=') {equal_sign = true; prev_operator = ""; num1 = answer; num2 = "";}
             else {prev_operator = operator;}
-            num1 = answer;
-            num2 = "";
+            
+            curr_standing = 'num1';
+            
             
         }else{
             first_operator = false;
@@ -132,7 +140,32 @@ function reset()
     operator_clicked = false;
     display(answer);
 }
+
+function deleting()
+{
+    const curr_display  = document.querySelector('#ans_display');
+    let val = curr_display.textContent;
+    if(val.length == 1 || val.length == 0){
+        display(0);
+        if(curr_standing == 'num1') num1 = "";
+        else if(curr_standing == 'num2') num2 = "";
+    }else{
+        let updated_val = val.slice(0, -1);
+        console.log(`updated val: ${updated_val}`);
+        console.log(`curr standing: ${curr_standing}`)
+        display(updated_val);
+        if(curr_standing == 'num1') num1 = updated_val;
+        else if(curr_standing == 'num2') num2 = updated_val;
+
+        console.log(`after updating n1: ${num1}`);
+        console.log(`after updating n2: ${num2}`);
+    }
+}
+
 const ac_buttons = document.querySelector('#ac');
 ac_buttons.addEventListener('click', reset);
+
+const del_button = document.querySelector('#del');
+del_button.addEventListener('click', deleting);
 
 //deciding when to evaluate
