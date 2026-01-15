@@ -6,47 +6,106 @@ body{
 
 #calculator_body
 {
-    width: 400px;
-    height:475px;
-    background-color: rgb(114, 114, 114);
+    width: 350px;
+    height:400px;
+    background-color: rgb(24, 52, 90);
     border-radius: 24px;
     display:flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 #screen
 {
-    width:350px;
+    width:300px;
     height:100px;
-    background-color: aliceblue;
-    margin:4%;
+    background-color: rgb(201, 231, 253);
+    margin:2%;
+    margin-top:5%;
     border-radius: 15px;
     display:flex;
     align-items: center;
-    font-size:30px;
+    font-size:35px;
     justify-content: flex-end;
-    padding:10px;
+    padding:17.5px;
     box-sizing: border-box;
 }
 
 
 #button_body
 {
-    width:350px;
-    height:300px;
+    width:300px;
+    height: 250px;px;
     margin:15px;
-    background-color:bisque;
+    background-color:rgb(192, 192, 192);
     border-radius: 15px;
     padding:20px;
     box-sizing: border-box;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom:5%;
+}
+#touched_buttons
+{
+    display:flex;
+    justify-content: space-between;
 }
 
 button{
     padding:10px;
-    font-size:18px;
+    font-size:22px;
     margin:1%;
     border-radius: 6px;
     border-style: solid;
     border-width: 1px;
+    width:45px;
+    height:45px;
+    background-color: rgb(29, 61, 87);
+    color:aliceblue
+}
+
+button:hover
+{
+    opacity:0.85;
+}
+
+.operatorbuttons
+{
+    background-color: rgb(255, 174, 68);
+    color:black
+}
+.operatorbuttons:hover{
+    background-color: rgb(248, 158, 40);
+}
+
+#del
+{
+    width:95px;
+    height:45px;
+    font-size:26px;
+}
+
+#ac
+{
+    width:60px;
+    font-size:26px;
+    background-color: rgb(103, 103, 102);
+}
+#zero
+{
+    width:65px;
+}
+
+#other_buttons
+{
+    display:flex;
+    justify-content: flex-start;
+    gap:4%;
+}
+
+#equals
+{
+    width:95px;
 }
