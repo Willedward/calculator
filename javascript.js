@@ -30,7 +30,7 @@ function operate(operator, num1, num2)
         return multiply(num1, num2);
     }
     else if(operator === '/'){
-        return divide(num1, num2);
+        return Math.round(divide(num1, num2)*10)/10;
     }
 }
 
@@ -124,9 +124,10 @@ operator_buttons.forEach((operator_button) => {
 
 function reset()
 {
-    answer = 5;
+    answer = 0;
     num1 = "";
     num2 = "";
+    equal_sign = false;
     first_operator = true;
     operator_clicked = false;
     display(answer);
