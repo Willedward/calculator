@@ -30,7 +30,7 @@ function operate(operator, num1, num2)
         return multiply(num1, num2);
     }
     else if(operator === '/'){
-        return Math.round(divide(num1, num2)*10)/10;
+        return Math.round(divide(num1, num2)*10)/1000;
     }
 }
 
